@@ -1,17 +1,13 @@
 import discord
 import asyncio
 import aiohttp
-import json
-import re
+import os
 from datetime import datetime
 
-# ============================================
-# CONFIGURATION - MODIFIEZ CES 3 LIGNES
-# ============================================
-TOKEN = "MTUxNDIwOTQ3ODE0MzM4MTU4Ng.GQbjoB.Q5JA30wJbUiqdAY-LuOIBR8uXF9uii6XYhiaqg"
-CHANNEL_ID = 1514209478143381586
+# Token et Channel ID via variables d'environnement Railway
+TOKEN = os.environ.get("TOKEN")
+CHANNEL_ID = int(os.environ.get("CHANNEL_ID", "0"))
 MOTS_CLES = ["nike air force", "jordan 1", "stone island", "north face", "ralph lauren"]
-# ============================================
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -43,12 +39,7 @@ def estimer_revente(titre, prix_achat):
     marge = revente - prix_achat
     return revente, marge
 
-def generer_description(titre, prix, etat="très bon état"):
-    marque = "l'article"
-    for m in PRIX_REVENTE.keys():
-        if m in titre.lower():
-            marque = titre
-            break
+def generer_description(titre, prix_achat, etat="très bon état"):
     return (
         f"✨ {titre} en {etat} !\n\n"
         f"📦 État : {etat.capitalize()}\n"
@@ -128,7 +119,7 @@ async def surveiller():
 
                 await channel.send(embed=embed)
 
-        await asyncio.sleep(300)  # Vérifie toutes les 5 minutes
+        await asyncio.sleep(300)
 
 @client.event
 async def on_ready():
