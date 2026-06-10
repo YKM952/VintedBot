@@ -8,7 +8,7 @@ from datetime import datetime
 # ============================================
 # CONFIGURATION - MODIFIEZ CES 3 LIGNES
 # ============================================
-TOKEN = MTUxNDIwOTQ3ODE0MzM4MTU4Ng.GQbjoB.Q5JA30wJbUiqdAY-LuOIBR8uXF9uii6XYhiaqg
+TOKEN = "MTUxNDIwOTQ3ODE0MzM4MTU4Ng.GQbjoB.Q5JA30wJbUiqdAY-LuOIBR8uXF9uii6XYhiaqg"
 CHANNEL_ID = 1514209478143381586
 MOTS_CLES = ["nike air force", "jordan 1", "stone island", "north face", "ralph lauren"]
 # ============================================
